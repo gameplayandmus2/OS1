@@ -1,0 +1,39 @@
+import random
+from collections import deque
+
+print("Введите значение интервала мультиплексирования")
+IM = int(input())
+N = random.randint(1, 15);
+q=deque()
+class Task:
+    def __init__(self, name, StartTakt, duration):
+        self.name = name
+        self.StartTakt = StartTakt
+        self.duration = duration
+    def info(self):
+        print(self.name,self.StartTakt,self.duration)
+    def changedur(self):
+        self.duration=self.duration-IM
+Tasks = []
+t=0
+for i in range(2):
+    print("Введите имя задачи")
+    n = input()
+    print("Введите такт активизации")
+    s = int(input())
+    print("Введите время выполнения")
+    d = int(input())
+    Zad = Task(n, s, d)
+    Tasks.append(Zad)
+    if s == 0:
+        q.appendleft(Zad)
+print("Имена задач, такт активизации и время выполнения")
+for task in Tasks:
+    task.info()
+    t = t+task.duration
+for i in range(0, t+1, IM):
+    for task in Tasks:
+        if itask.StartTakt+IM:
+            q.append(task)
+    if q:
+        ZadInWork = q.popleft()
